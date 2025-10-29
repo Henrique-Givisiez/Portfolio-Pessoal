@@ -1,0 +1,198 @@
+@import "tailwindcss";
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@theme {
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Inter, sans-serif;
+
+  --color-background: hsl(0 0% 100%);
+  --color-foreground: hsl(220 15% 15%);
+
+  --color-card: hsl(0 0% 100%);
+  --color-card-foreground: hsl(220 15% 15%);
+
+  --color-popover: hsl(0 0% 100%);
+  --color-popover-foreground: hsl(220 15% 15%);
+
+  --color-primary: hsl(209 93% 40%);
+  --color-primary-foreground: hsl(0 0% 100%);
+
+  --color-secondary: hsl(210 40% 96%);
+  --color-secondary-foreground: hsl(220 15% 15%);
+
+  --color-muted: hsl(220 13% 96%);
+  --color-muted-foreground: hsl(220 9% 46%);
+
+  --color-accent: hsl(180 60% 50%);
+  --color-accent-foreground: hsl(0 0% 100%);
+
+  --color-destructive: hsl(0 84% 60%);
+  --color-destructive-foreground: hsl(0 0% 100%);
+
+  --color-border: hsl(220 13% 91%);
+  --color-input: hsl(220 13% 91%);
+  --color-ring: hsl(209 93% 40%);
+
+  --radius: 0.75rem;
+
+  --gradient-primary: linear-gradient(135deg, hsl(209 93% 40%) 0%, hsl(209 93% 50%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(180 60% 50%) 0%, hsl(180 80% 60%) 100%);
+    --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(220 13% 98%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(220 13% 98%) 0%, hsl(209 93% 97%) 100%);
+}
+
+/* Tema escuro: sobrescreve tokens */
+@theme .dark {
+  --color-background: hsl(220 20% 8%);
+  --color-foreground: hsl(220 10% 95%);
+
+  --color-card: hsl(220 18% 12%);
+  --color-card-foreground: hsl(220 10% 95%);
+
+  --color-popover: hsl(220 18% 12%);
+  --color-popover-foreground: hsl(220 10% 95%);
+
+  --color-primary: hsl(209 93% 50%);
+  --color-primary-foreground: hsl(0 0% 100%);
+
+  --color-secondary: hsl(220 18% 18%);
+  --color-secondary-foreground: hsl(220 10% 95%);
+
+  --color-muted: hsl(220 18% 18%);
+  --color-muted-foreground: hsl(220 9% 60%);
+
+  --color-accent: hsl(180 60% 45%);
+  --color-accent-foreground: hsl(0 0% 100%);
+
+  --color-destructive: hsl(0 70% 50%);
+  --color-destructive-foreground: hsl(0 0% 100%);
+
+  --color-border: hsl(220 18% 18%);
+  --color-input: hsl(220 18% 18%);
+  --color-ring: hsl(209 93% 50%);
+
+      --gradient-primary: linear-gradient(135deg, hsl(209 93% 50%) 0%, hsl(209 93% 60%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(180 60% 45%) 0%, hsl(180 80% 55%) 100%);
+    --gradient-subtle: linear-gradient(180deg, hsl(220 20% 8%) 0%, hsl(220 18% 12%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(220 20% 8%) 0%, hsl(209 93% 10%) 100%);
+}
+
+/* Seu base/estilos globais continuam valendo */
+@layer base {
+  * {
+    @apply border-border; /* agora existe */
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+}
+
+@layer utilities {
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+
+  .gradient-accent {
+    background: var(--gradient-accent);
+  }
+
+  .gradient-subtle {
+    background: var(--gradient-subtle);
+  }
+
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .shadow-elegant {
+    box-shadow: var(--shadow-lg);
+  }
+
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+
+  
+  .hover-lift {
+    /* coloque a transição como CSS normal */
+    transition: var(--transition-smooth);
+    @apply hover:-translate-y-1 hover:shadow-xl;
+  }
+
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 30%, hsl(209 93% 45% / 0.15), transparent 70%),
+              radial-gradient(circle at 80% 70%, hsl(180 80% 50% / 0.1), transparent 70%);
+  animation: gradientMove 10s ease-in-out infinite alternate;
+}
+
+
+@keyframes gradientMove {
+  from { background-position: 0% 50%; }
+  to { background-position: 100% 50%; }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 5s linear infinite;
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
