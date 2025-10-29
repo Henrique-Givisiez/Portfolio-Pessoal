@@ -1,31 +1,20 @@
-import { Calendar, MapPin, Award } from "lucide-react";
+import { Calendar, MapPin, Award, GraduationCap, CircleSmall, BriefcaseBusiness } from "lucide-react";
 
 const Experience = () => {
   const experiences = [
     {
       type: "education",
-      title: "Engenharia de Software",
+      title: "Engenharia de Computação",
       organization: "Universidade de Brasília (UnB)",
-      period: "2018 - 2024",
+      period: "06/2021 - 06/2026",
       location: "Brasília, DF",
-      description:
-        "Graduação com foco em engenharia de dados, cloud computing e sistemas distribuídos. TCC sobre detecção de ataques EDoS em ambientes cloud.",
       highlights: [
-        "TCC: Economic Denial of Sustainability Detection",
-        "Membro da Struct - Empresa Júnior de Software",
-        "Pesquisa em CloudSim Plus",
+        "TCC: Mitigações contra ataques Economic Denial of Sustainability",
+        "Gerente de Projetos da Struct - Soluções Web",
       ],
     },
     {
-      type: "certification",
-      title: "FinOps Certified Practitioner",
-      organization: "FinOps Foundation",
-      period: "2023",
-      description:
-        "Certificação em práticas de gestão financeira de cloud, otimização de custos e governança de recursos em ambientes cloud.",
-    },
-    {
-      type: "certification",
+      type: "work",
       title: "Azure Data Engineer Associate (DP-203)",
       organization: "Microsoft",
       period: "2023",
@@ -33,32 +22,37 @@ const Experience = () => {
         "Certificação em design e implementação de soluções de dados no Azure, incluindo pipelines, armazenamento e processamento.",
     },
     {
-      type: "experience",
-      title: "Data Engineer",
-      organization: "Tech Company",
-      period: "2023 - Presente",
-      location: "Remoto",
-      description:
-        "Desenvolvimento de pipelines de dados escaláveis, implementação de práticas de FinOps e automação de infraestrutura cloud.",
+      type: "work",
+      title: "Estagiário em Cloud & FinOps",
+      organization: "Tribunal de Contas da União (TCU)",
+      period: "fev/2025 - Atualmente",
+      location: "Brasília, DF",
       highlights: [
-        "Redução de 40% nos custos de infraestrutura cloud",
-        "Implementação de data lakehouse com Delta Lake",
-        "Automação de processos ETL com Airflow",
+        "Projetei uma arquitetura de dados no Microsoft Fabric para centralizar custos da AWS, Azure e GCP. Automatizei pipelines ETL com Power Automate e Python, reduzindo o trabalho manual e oferecendo insights em tempo quase real",
+        "Estruturei um Lakehouse no Fabric para armazenar e transformar dados da API do Azure Boards, permitindo o monitoramento de desempenho de fornecedores e contratos",
+        "Desenvolvi relatórios interativos no Power BI utilizando DAX e dataflows, com indicadores de custo por recurso e utilização de compromissos (FinOps KPIs)",
+        "Criei scripts em Python (PySpark + Pandas + Requests) para ingestão e limpeza de dados em lote, melhorando a confiabilidade e a rastreabilidade das informações"
       ],
     },
     {
-      type: "experience",
-      title: "Desenvolvedor Full Stack",
-      organization: "Struct - Empresa Júnior UnB",
-      period: "2020 - 2022",
+      type: "work",
+      title: "Gerente de Projetos",
+      organization: "Struct - Soluções Web",
+      period: "06/2025 - 10/2025",
       location: "Brasília, DF",
-      description:
-        "Desenvolvimento de aplicações web fullstack para clientes diversos, utilizando tecnologias modernas e metodologias ágeis.",
       highlights: [
-        "Liderou equipe de 5 desenvolvedores",
-        "Entregou 10+ projetos para clientes reais",
-        "Implementou CI/CD e práticas DevOps",
+        "Atuei como mentor técnico, conduzindo revisões de código (PRs) e garantindo a qualidade final dos produtos entregues aos clientes",
+        "Liderei o Projeto ROMA, um sistema web para gestão interna de restaurante, coordenando o ciclo completo do projeto — desde o planejamento até a comunicação com o cliente",
+        "Participei ativamente do desenvolvimento utilizando a T3 Stack (Next.js, TypeScript, Tailwind CSS e tRPC), sendo responsável pela modelagem do banco via Prisma ORM e pela arquitetura de comunicação entre front e back-end",
       ],
+    },
+    {
+      type: "certification",
+      title: "FinOps Certified Practitioner",
+      organization: "FinOps Foundation",
+      period: "out/2025",
+      description:
+      "Certificação em práticas de gestão financeira de cloud, otimização de custos e governança de recursos em ambientes cloud.",
     },
   ];
 
@@ -67,21 +61,21 @@ const Experience = () => {
       case "certification":
         return Award;
       case "education":
-        return Award;
+        return GraduationCap;
       default:
-        return Calendar;
+        return BriefcaseBusiness;
     }
   };
 
   return (
-    <section id="experience">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="experience" className="scroll-mt-24 md:scroll-mt-28 bg-gradient-subtle">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 mt-20">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-16 animate-fade-in">
+          <div className="text-center mb-10 animate-fade-in">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
               Experiência & Educação
             </h2>
-            <div className="w-20 h-1 gradient-primary mx-auto rounded-full mb-6" />
+            <div className="w-80 h-1 gradient-primary mx-auto rounded-full mb-5" />
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Trajetória acadêmica e profissional em engenharia de dados e cloud
             </p>
@@ -104,7 +98,7 @@ const Experience = () => {
                     style={{ animationDelay: `${index * 100}ms` }}
                   >
                     {/* Icon */}
-                    <div className="absolute left-0 md:left-1/2 w-10 h-10 md:-translate-x-1/2 bg-primary rounded-full flex items-center justify-center z-10 shadow-elegant">
+                    <div className="mt-2 absolute left-0 md:left-1/2 w-10 h-10 md:-translate-x-1/2 bg-primary rounded-full flex items-center justify-center z-10 shadow-elegant">
                       <Icon className="h-5 w-5 text-primary-foreground" />
                     </div>
 
@@ -112,7 +106,7 @@ const Experience = () => {
                     <div
                       className={`flex-1 ml-14 md:ml-0 ${
                         index % 2 === 0
-                          ? "md:pr-12 md:text-right"
+                          ? "md:pr-12"
                           : "md:pl-12"
                       }`}
                     >
@@ -144,13 +138,13 @@ const Experience = () => {
                         </p>
 
                         {item.highlights && (
-                          <ul className="space-y-1 text-sm">
+                          <ul className="space-y-3 text-sm">
                             {item.highlights.map((highlight, i) => (
                               <li
                                 key={i}
                                 className="flex items-start gap-2 text-muted-foreground"
                               >
-                                <span className="text-accent mt-1">•</span>
+                                <span className="text-accent mt-1"><CircleSmall className="h-3 w-3" /></span>
                                 <span>{highlight}</span>
                               </li>
                             ))}

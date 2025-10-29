@@ -8,31 +8,29 @@ const Skills = () => {
       skills: [
         "Python",
         "Apache Spark",
-        "Airflow",
-        "SQL/NoSQL",
+        "Microsoft Fabric",
+        "SQL",
         "ETL/ELT",
-        "Data Warehousing",
-        "Kafka",
+        "Power BI",
+        "REST APIs",
         "Delta Lake",
+        "Pandas",
+        "Data Modeling",
       ],
     },
     {
       icon: Cloud,
-      title: "Cloud & Infrastructure",
+      title: "Cloud",
       skills: [
         "AWS",
         "Azure",
         "GCP",
-        "Terraform",
         "Docker",
-        "Kubernetes",
-        "CloudFormation",
-        "Serverless",
       ],
     },
     {
       icon: DollarSign,
-      title: "FinOps & Governance",
+      title: "FinOps",
       skills: [
         "Cost Optimization",
         "Budget Management",
@@ -40,50 +38,23 @@ const Skills = () => {
         "FinOps Framework",
         "Azure Cost Management",
         "AWS Cost Explorer",
-        "Showback/Chargeback",
-        "KPI Tracking",
+        "GCP Billing",
+        "FOCUS Dashboards",
       ],
     },
     {
       icon: Code,
-      title: "Software & Automation",
+      title: "Dev & Automação",
       skills: [
         "Python",
-        "Java",
-        "JavaScript/TypeScript",
-        "React",
-        "Node.js",
-        "FastAPI",
+        "JavaScript & TypeScript",
+        "React & Next.js",
+        "tRPC",
         "REST APIs",
-        "GraphQL",
-      ],
-    },
-    {
-      icon: GitBranch,
-      title: "DevOps & CI/CD",
-      skills: [
         "Git/GitHub",
-        "GitHub Actions",
-        "Jenkins",
-        "Azure DevOps",
-        "GitLab CI",
-        "Infrastructure as Code",
-        "Monitoring",
-        "Logging",
-      ],
-    },
-    {
-      icon: Brain,
-      title: "Data Science & ML",
-      skills: [
-        "Machine Learning",
-        "Pandas",
-        "NumPy",
-        "Scikit-learn",
-        "Data Visualization",
-        "Statistical Analysis",
-        "Feature Engineering",
-        "Model Deployment",
+        "Linux",
+        "Testes Unitários",
+        "CI/CD",
       ],
     },
   ];
@@ -92,7 +63,7 @@ const Skills = () => {
     <section id="skills" className="scroll-mt-24 md:scroll-mt-28 bg-gradient-subtle">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 mt-20">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16 animate-fade-in">
+          <div className="text-center mb-10 animate-fade-in">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">Habilidades</h2>
             <div className="w-40 h-1 gradient-primary mx-auto rounded-full mb-5" />
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -101,7 +72,7 @@ const Skills = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-6">
             {skillCategories.map((category, index) => (
               <div
                 key={index}

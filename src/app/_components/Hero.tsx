@@ -19,8 +19,8 @@ const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 z-10">
-        <div className="relative mb-12 flex justify-center animate-fade-in">
+      <div className="mt-10 container mx-auto px-4 sm:px-6 lg:px-8 z-10">
+        <div className="relative mb-5 flex justify-center animate-fade-in">
           {/* Halo animado */}
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="h-64 w-64 rounded-full bg-[conic-gradient(var(--color-primary)_0deg,var(--color-accent,180_80%_50%)_120deg,var(--color-primary)_240deg,var(--color-accent,180_80%_50%)_360deg)] animate-spin-slow blur-[1px] opacity-70" />
@@ -71,7 +71,7 @@ const Hero = () => {
           </div>
 
           {/* Social Links */}
-          <div className="flex gap-4 justify-center pt-8">
+          <div className="flex gap-4 justify-center pt-8 mb-3">
             <a
               href="https://www.linkedin.com/in/henrique-givisiez/"
               target="_blank"
