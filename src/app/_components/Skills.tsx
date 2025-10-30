@@ -67,7 +67,7 @@ const Skills = () => {
             <h2 className="text-4xl md:text-5xl font-bold mb-4">Habilidades</h2>
             <div className="w-40 h-1 gradient-primary mx-auto rounded-full mb-5" />
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Conjunto de tecnologias e ferramentas para construir soluções de
+              Veja meu conjunto de tecnologias e ferramentas para construir soluções de
               dados robustas e escaláveis
             </p>
           </div>

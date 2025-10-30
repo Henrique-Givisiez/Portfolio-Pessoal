@@ -1,8 +1,35 @@
+"use client"
 import { ArrowDown, Download, Github, Linkedin, Mail } from "lucide-react";
-import { Button } from "./ui/button";
-import heroBg from "~/app/assets/hero-bg.jpg"
 import profilePic from "~/app/assets/foto-perfil.jpg";
+import heroBg from "~/app/assets/hero-bg.jpg"
+import { Button } from "./ui/button";
+import { toast } from "sonner";
+
+const CV_PATH = "/cv/Currículo - Henrique Givisiez.pdf";
+
 const Hero = () => {
+  const DownloadCurriculo = async () => {
+    // Tenta baixar como blob (melhor compatibilidade)
+    try {
+      const res = await fetch(CV_PATH);
+      if (!res.ok) throw new Error("Falha no fetch do PDF");
+      const blob = await res.blob();
+      const url = URL.createObjectURL(blob);
+
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "Henrique-Givisiez-CV.pdf"; // nome do arquivo ao salvar
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 1500);
+      toast.success("Currículo baixado!");
+    } catch {
+      toast.error("Não foi possível baixar o currículo.");
+      // Fallback (ex.: iOS abre em nova aba)
+      window.open(CV_PATH, "_blank");
+    }
+  };
   return (
     <section
       id="hero"
@@ -52,21 +79,19 @@ const Hero = () => {
               className="px-6 py-3 rounded-xl bg-primary text-white font-medium hover:bg-primary/90 transition-colors"
               asChild
             >
-              <a href="#projects">
-                Ver Projetos
+              <a href="#about">
+                Sobre mim
                 <ArrowDown className="ml-2 h-5 w-5" />
               </a>
             </Button>
             <Button
               size="lg"
               variant="outline"
-              className="px-6 py-3 rounded-xl border border-border text-foreground hover:bg-muted transition-colors"
-              asChild
+              className="px-6 py-3 rounded-xl border border-border text-foreground hover:bg-muted transition-colors cursor-pointer"
+              onClick={DownloadCurriculo}
             >
-              <a href="#contact">
-                <Download className="mr-2 h-5 w-5" />
-                Baixar CV
-              </a>
+              <Download className="mr-2 h-5 w-5" />
+              Baixar CV
             </Button>
           </div>
 
@@ -89,7 +114,7 @@ const Hero = () => {
               <Github className="h-5 w-5" />
             </a>
             <a
-              href="mailto:lucogds@.com"
+              href="mailto:lucogds@gmail.com"
               className="p-3 rounded-full bg-secondary hover:bg-primary hover:text-primary-foreground transition-smooth hover-lift"
             >
               <Mail className="h-5 w-5" />

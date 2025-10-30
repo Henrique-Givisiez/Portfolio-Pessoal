@@ -33,14 +33,14 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="scroll-mt-24 md:scroll-mt-28 bg-gradient-subtle mb-10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 mt-20">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-16 animate-fade-in">
+          <div className="text-center mb-10 animate-fade-in">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Vamos conversar sobre dados?
+              Contato
             </h2>
-            <div className="w-20 h-1 gradient-primary mx-auto rounded-full mb-6" />
+            <div className="w-30 h-1 gradient-primary mx-auto rounded-full mb-6" />
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Estou sempre aberto a novos projetos, colaborações e
               oportunidades. Entre em contato!
@@ -110,7 +110,7 @@ const Contact = () => {
 
                 <Button
                   type="submit"
-                  className="w-full gradient-primary text-white hover:opacity-90 transition-smooth"
+                  className="w-full gradient-primary text-white hover:opacity-90 transition-smooth cursor-pointer hover-lift"
                   size="lg"
                 >
                   <Send className="h-4 w-4 mr-2" />
@@ -127,13 +127,13 @@ const Contact = () => {
                 </h3>
                 <div className="space-y-4">
                   <a
-                    href="mailto:henrique@example.com"
+                    href="mailto:lucogds@gmail.com"
                     className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-smooth group"
                   >
                     <div className="p-2 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-smooth">
                       <Mail className="h-5 w-5" />
                     </div>
-                    <span>henrique@example.com</span>
+                    <span>lucogds@gmail.com</span>
                   </a>
 
                   <a
@@ -149,7 +149,7 @@ const Contact = () => {
                   </a>
 
                   <a
-                    href="https://github.com/henriquegivisiez"
+                    href="https://github.com/henrique-givisiez"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-smooth group"
@@ -157,7 +157,7 @@ const Contact = () => {
                     <div className="p-2 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-smooth">
                       <Github className="h-5 w-5" />
                     </div>
-                    <span>github.com/henriquegivisiez</span>
+                    <span>github.com/henrique-givisiez</span>
                   </a>
                 </div>
               </div>

@@ -6,7 +6,7 @@ const Experience = () => {
       type: "education",
       title: "Engenharia de Computação",
       organization: "Universidade de Brasília (UnB)",
-      period: "06/2021 - 06/2026",
+      period: "jun/2021 - jun/2026",
       location: "Brasília, DF",
       highlights: [
         "TCC: Mitigações contra ataques Economic Denial of Sustainability",
@@ -15,11 +15,27 @@ const Experience = () => {
     },
     {
       type: "work",
-      title: "Azure Data Engineer Associate (DP-203)",
-      organization: "Microsoft",
-      period: "2023",
-      description:
-        "Certificação em design e implementação de soluções de dados no Azure, incluindo pipelines, armazenamento e processamento.",
+      title: "Monitor de Física",
+      organization: "Centro Educacional Sigma",
+      period: "jun/2022 - jun/2023",
+      location: "Brasília, DF",
+      highlights: [
+        "Desenvolvi habilidades de comunicação e didática ao ministrar aulas e plantões de dúvidas, simplificando conceitos complexos de Física para alunos do ensino médio",
+        "Apliquei raciocínio analítico na formulação de exercícios preparatórios para vestibulares, focando na estruturação lógica e na resolução de problemas",
+        "Colaborei com o corpo docente no auxílio e preparação de materiais para aulas, e corrigi avaliações para fornecer feedback construtivo aos alunos"
+      ]
+    },
+    {
+      type: "work",
+      title: "Estagiário em Engenharia e Automação de Processos",
+      organization: "Banco do Brasil",
+      period: "jun/2023 - fev/2025",
+      location: "Brasília, DF",
+      highlights: [
+        "Desenvolvi scripts em Python para automatizar o processamento de grandes volumes de plantas e documentos técnicos, otimizando o tempo de busca em 80%",
+        "Criei planilhas analíticas no Excel integradas com processamento em Python para previsão orçamentária de obras, aumentando a precisão e reduzindo retrabalho",
+        "Participei da revisão e melhoria de fluxos operacionais com base em análises de dados, contribuindo para maior controle e eficiência em projetos de engenharia."
+      ]
     },
     {
       type: "work",
@@ -36,7 +52,7 @@ const Experience = () => {
     },
     {
       type: "work",
-      title: "Gerente de Projetos",
+      title: "Desenvolvedor Web & Gerente de Projetos",
       organization: "Struct - Soluções Web",
       period: "06/2025 - 10/2025",
       location: "Brasília, DF",
@@ -77,7 +93,7 @@ const Experience = () => {
             </h2>
             <div className="w-80 h-1 gradient-primary mx-auto rounded-full mb-5" />
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Trajetória acadêmica e profissional em engenharia de dados e cloud
+              Conheça minha trajetória acadêmica e profissional
             </p>
           </div>
 
@@ -111,11 +127,11 @@ const Experience = () => {
                       }`}
                     >
                       <div className="bg-card rounded-xl border border-border p-6 hover:border-primary/50 transition-smooth hover-lift">
-                        <div className="flex flex-col md:items-start gap-2 mb-3">
-                          <h3 className="text-xl font-semibold">
+                        <div className="flex flex-col md:items-start gap-1">
+                          <h3 className="text-xl font-semibold w-2/5">
                             {item.title}
                           </h3>
-                          <p className="text-primary font-medium">
+                          <p className="text-primary font-medium mb-2">
                             {item.organization}
                           </p>
                         </div>
