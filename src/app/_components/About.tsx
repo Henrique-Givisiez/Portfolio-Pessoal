@@ -1,26 +1,31 @@
+"use client";
+
 import { Cloud, Database, DollarSign, Code } from "lucide-react";
+import { useLanguage } from "~/i18n/LanguageProvider";
 
 const About = () => {
+  const { t, tr } = useLanguage();
+
   const highlights = [
     {
       icon: Database,
-      title: "Data Engineering",
-      description: "Pipelines escaláveis e arquiteturas modernas",
+      title: t("about.cards.data_engineering.title"),
+      description: t("about.cards.data_engineering.desc"),
     },
     {
       icon: Cloud,
-      title: "Cloud",
-      description: "AWS, Azure e soluções distribuídas",
+      title: t("about.cards.cloud.title"),
+      description: t("about.cards.cloud.desc"),
     },
     {
       icon: DollarSign,
-      title: "FinOps",
-      description: "Otimização de custos e governança financeira",
+      title: t("about.cards.finops.title"),
+      description: t("about.cards.finops.desc"),
     },
     {
       icon: Code,
-      title: "Dev & Automação",
-      description: "Web, DevOps, CI/CD e automação de processos",
+      title: t("about.cards.dev_auto.title"),
+      description: t("about.cards.dev_auto.desc"),
     },
   ];
 
@@ -33,58 +38,68 @@ const About = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-10 animate-fade-in mt-10"> 
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">Sobre mim</h2> 
-            <div className="w-40 h-1 gradient-primary mx-auto rounded-full mb-20" /> 
+          <div className="text-center mb-10 animate-fade-in mt-10">
+            <h2 id="about-title" className="text-4xl md:text-5xl font-bold mb-4">
+              {t("about.title")}
+            </h2>
+            <div className="w-40 h-1 gradient-primary mx-auto rounded-full mb-20" />
           </div>
 
           <div className="grid md:grid-cols-2 gap-12 items-start">
             {/* Coluna texto */}
             <div className="space-y-6 text-muted-foreground leading-relaxed">
               <p className="text-lg text-foreground/90">
-                Sou um Engenheiro de Dados apaixonado por criar soluções de dados
-                eficientes, escaláveis e baseadas em nuvem que transformam informações
-                brutas em insights acionáveis. Meu foco é unir{" "}
-                <span className="text-foreground font-semibold">Engenharia de Dados</span>{" "}
-                e <span className="text-foreground font-semibold">FinOps</span> para
-                otimizar desempenho e custo em ambientes multicloud.
+                {tr("about.intro", {
+                  Em: ({ children }: { children: React.ReactNode }) => (
+                    <span className="text-foreground font-semibold">{children}</span>
+                  ),
+                })}
               </p>
 
               <ul className="list-none space-y-3">
                 <li className="flex gap-3">
                   <span className="mt-2 size-1.5 rounded-full bg-primary/70" />
                   <span>
-                    Experiência prática no design de{" "}
-                    <span className="text-foreground font-medium">arquiteturas
-                    ponta a ponta</span> — da modelagem Lakehouse e ETL ao
-                    desenvolvimento de dashboards e monitoramento de custos.
+                    {tr("about.bullets.0", {
+                      Strong: ({ children }: { children: React.ReactNode }) => (
+                        <span className="text-foreground font-medium">{children}</span>
+                      ),
+                    })}
                   </span>
                 </li>
                 <li className="flex gap-3">
                   <span className="mt-2 size-1.5 rounded-full bg-primary/70" />
                   <span>
-                    Construí <strong>data pipelines automatizados</strong> para
-                    AWS e Azure, proporcionando visibilidade quase em tempo real
-                    dos gastos na nuvem e das métricas operacionais.
+                    {tr("about.bullets.1", {
+                      Strong: ({ children }: { children: React.ReactNode }) => (
+                        <strong>{children}</strong>
+                      ),
+                    })}
                   </span>
                 </li>
                 <li className="flex gap-3">
                   <span className="mt-2 size-1.5 rounded-full bg-primary/70" />
                   <span>
-                    Também lidero projetos <strong>full-stack</strong> com{" "}
-                    <strong>Next.js (T3 Stack)</strong> e <strong>Prisma ORM</strong>,
-                    do design ao deployment.
+                    {tr("about.bullets.2", {
+                      Strong: ({ children }: { children: React.ReactNode }) => (
+                        <strong>{children}</strong>
+                      ),
+                      Code: ({ children }: { children: React.ReactNode }) => (
+                        <strong>{children}</strong>
+                      ),
+                    })}
                   </span>
                 </li>
               </ul>
+
               {/* CTA discreto */}
               <div className="pt-2">
                 <a
                   href="#contact"
                   className="inline-flex items-center gap-2 rounded-xl px-4 py-2 ring-1 ring-border hover:bg-muted transition-colors"
                 >
-                  Vamos conversar
-                  <svg className="size-4" viewBox="0 0 24 24" fill="none">
+                  {t("about.cta_contact")}
+                  <svg className="size-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                     <path
                       d="M5 12h14m0 0-5-5m5 5-5 5"
                       stroke="currentColor"
@@ -106,9 +121,7 @@ const About = () => {
                 >
                   <item.icon className="h-8 w-8 text-primary mb-3 transition-transform group-hover:-translate-y-0.5" />
                   <h3 className="text-foreground font-semibold">{item.title}</h3>
-                  <p className="mt-1 text-sm text-muted-foreground">
-                    {item.description}
-                  </p>
+                  <p className="mt-1 text-sm text-muted-foreground">{item.description}</p>
                   <div className="mt-4 h-px w-full bg-gradient-to-r from-transparent via-primary/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
               ))}

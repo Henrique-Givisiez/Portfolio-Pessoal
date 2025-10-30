@@ -1,10 +1,15 @@
-import { Database, Cloud, DollarSign, Code, GitBranch, Brain } from "lucide-react";
+"use client";
+
+import { Database, Cloud, DollarSign, Code } from "lucide-react";
+import { useLanguage } from "~/i18n/LanguageProvider";
 
 const Skills = () => {
+  const { t } = useLanguage();
+
   const skillCategories = [
     {
       icon: Database,
-      title: "Data Engineering",
+      key: "data_engineering",
       skills: [
         "Python",
         "Apache Spark",
@@ -20,17 +25,12 @@ const Skills = () => {
     },
     {
       icon: Cloud,
-      title: "Cloud",
-      skills: [
-        "AWS",
-        "Azure",
-        "GCP",
-        "Docker",
-      ],
+      key: "cloud",
+      skills: ["AWS", "Azure", "GCP", "Docker"],
     },
     {
       icon: DollarSign,
-      title: "FinOps",
+      key: "finops",
       skills: [
         "Cost Optimization",
         "Budget Management",
@@ -44,7 +44,7 @@ const Skills = () => {
     },
     {
       icon: Code,
-      title: "Dev & Automação",
+      key: "dev_automation",
       skills: [
         "Python",
         "JavaScript & TypeScript",
@@ -53,29 +53,33 @@ const Skills = () => {
         "REST APIs",
         "Git/GitHub",
         "Linux",
-        "Testes Unitários",
+        "Unit Testing",
         "CI/CD",
       ],
     },
   ];
 
   return (
-    <section id="skills" className="scroll-mt-24 md:scroll-mt-28 bg-gradient-subtle">
+    <section
+      id="skills"
+      className="scroll-mt-24 md:scroll-mt-28 bg-gradient-subtle"
+    >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 mt-20">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-10 animate-fade-in">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">Habilidades</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              {t("skills.title")}
+            </h2>
             <div className="w-40 h-1 gradient-primary mx-auto rounded-full mb-5" />
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Veja meu conjunto de tecnologias e ferramentas para construir soluções de
-              dados robustas e escaláveis
+              {t("skills.lead")}
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-6">
             {skillCategories.map((category, index) => (
               <div
-                key={index}
+                key={category.key}
                 className="bg-card rounded-xl border border-border p-6 hover:border-primary/50 transition-smooth hover-lift animate-scale-in"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
@@ -83,8 +87,11 @@ const Skills = () => {
                   <div className="p-2 rounded-lg gradient-primary">
                     <category.icon className="h-6 w-6 text-white" />
                   </div>
-                  <h3 className="text-lg font-semibold">{category.title}</h3>
+                  <h3 className="text-lg font-semibold">
+                    {t(`skills.categories.${category.key}.title`)}
+                  </h3>
                 </div>
+
                 <div className="flex flex-wrap gap-2">
                   {category.skills.map((skill, skillIndex) => (
                     <span

@@ -1,24 +1,22 @@
-"use client"
+"use client";
 import { useState } from "react";
 import { Mail, Linkedin, Github, Send } from "lucide-react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { toast } from "~/hooks/use-toast";
+import { useLanguage } from "~/i18n/LanguageProvider";
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
+  const { t } = useLanguage();
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically send the form data to a backend
+    // aqui você enviaria os dados p/ backend
     toast({
-      title: "Mensagem enviada!",
-      description: "Obrigado pelo contato. Responderei em breve.",
+      title: t("contact.toast.success.title"),
+      description: t("contact.toast.success.desc"),
     });
     setFormData({ name: "", email: "", message: "" });
   };
@@ -26,10 +24,7 @@ const Contact = () => {
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   return (
@@ -38,12 +33,11 @@ const Contact = () => {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-10 animate-fade-in">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Contato
+              {t("contact.title")}
             </h2>
             <div className="w-30 h-1 gradient-primary mx-auto rounded-full mb-6" />
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Estou sempre aberto a novos projetos, colaborações e
-              oportunidades. Entre em contato!
+              {t("contact.lead")}
             </p>
           </div>
 
@@ -52,17 +46,14 @@ const Contact = () => {
             <div className="bg-card rounded-xl border border-border p-8 animate-slide-in">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label
-                    htmlFor="name"
-                    className="block text-sm font-medium mb-2"
-                  >
-                    Nome
+                  <label htmlFor="name" className="block text-sm font-medium mb-2">
+                    {t("contact.form.name.label")}
                   </label>
                   <Input
                     id="name"
                     name="name"
                     type="text"
-                    placeholder="Seu nome"
+                    placeholder={t("contact.form.name.placeholder")}
                     value={formData.name}
                     onChange={handleChange}
                     required
@@ -71,17 +62,14 @@ const Contact = () => {
                 </div>
 
                 <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-medium mb-2"
-                  >
-                    Email
+                  <label htmlFor="email" className="block text-sm font-medium mb-2">
+                    {t("contact.form.email.label")}
                   </label>
                   <Input
                     id="email"
                     name="email"
                     type="email"
-                    placeholder="seu@email.com"
+                    placeholder={t("contact.form.email.placeholder")}
                     value={formData.email}
                     onChange={handleChange}
                     required
@@ -90,16 +78,13 @@ const Contact = () => {
                 </div>
 
                 <div>
-                  <label
-                    htmlFor="message"
-                    className="block text-sm font-medium mb-2"
-                  >
-                    Mensagem
+                  <label htmlFor="message" className="block text-sm font-medium mb-2">
+                    {t("contact.form.message.label")}
                   </label>
                   <Textarea
                     id="message"
                     name="message"
-                    placeholder="Sua mensagem..."
+                    placeholder={t("contact.form.message.placeholder")}
                     value={formData.message}
                     onChange={handleChange}
                     required
@@ -114,7 +99,7 @@ const Contact = () => {
                   size="lg"
                 >
                   <Send className="h-4 w-4 mr-2" />
-                  Enviar Mensagem
+                  {t("contact.form.submit")}
                 </Button>
               </form>
             </div>
@@ -123,8 +108,9 @@ const Contact = () => {
             <div className="space-y-6 animate-slide-in" style={{ animationDelay: "100ms" }}>
               <div className="bg-card rounded-xl border border-border p-8">
                 <h3 className="text-xl font-semibold mb-6">
-                  Informações de Contato
+                  {t("contact.info.title")}
                 </h3>
+
                 <div className="space-y-4">
                   <a
                     href="mailto:lucogds@gmail.com"
@@ -164,11 +150,10 @@ const Contact = () => {
 
               <div className="bg-gradient-primary rounded-xl p-8 text-white">
                 <h3 className="text-xl font-semibold mb-3">
-                  Disponível para oportunidades
+                  {t("contact.banner.title")}
                 </h3>
                 <p className="text-white/90">
-                  Atualmente buscando novas oportunidades em engenharia de
-                  dados, cloud e FinOps. Vamos construir algo incrível juntos!
+                  {t("contact.banner.body")}
                 </p>
               </div>
             </div>

@@ -1,10 +1,14 @@
 "use client";
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import { useLanguage } from "~/i18n/LanguageProvider";
+import LangToggle from "./LangToggle";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const { lang, setLang, t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -13,22 +17,22 @@ const Navigation = () => {
   }, []);
 
   const navLinks = [
-    { href: "#about", label: "Sobre" },
-    { href: "#projects", label: "Projetos" },
-    { href: "#skills", label: "Habilidades" },
-    { href: "#experience", label: "Experiência" },
-    { href: "#contact", label: "Contato" },
+    { href: "#about", label: t("nav.about") },
+    { href: "#projects", label: t("nav.projects") },
+    { href: "#skills", label: t("nav.skills") || (lang === "pt" ? "Habilidades" : "Skills") },
+    { href: "#experience", label: t("nav.experience") || (lang === "pt" ? "Experiência" : "Experience") },
+    { href: "#contact", label: t("nav.contact") },
   ];
 
-  // classes do container fixo — agora 100% theme-aware
+  // container fixo — theme-aware
   const navShell =
     "fixed top-0 left-0 right-0 z-50 transition-all duration-300 backdrop-blur-md";
 
   const navSurface = isScrolled
-    ? // quando scrolado: eleva, aplica borda e fundo quase opaco (claro/escuro)
-      "bg-background/90 border-b border-border shadow-md"
-    : // no topo: bem translúcido, sem borda, fica bonito no dark também
-      "bg-background/60 border-b border-transparent";
+    ? "bg-background/90 border-b border-border shadow-md"
+    : "bg-background/60 border-b border-transparent";
+
+  const toggleLabel = lang === "pt" ? "🇧🇷 PT" : "🇺🇸 EN";
 
   return (
     <nav className={`${navShell} ${navSurface}`}>
@@ -53,12 +57,19 @@ const Navigation = () => {
                 {link.label}
               </a>
             ))}
+
+            {/* Botão de idioma (desktop) */}
+            <LangToggle className="ml-2" size="md"  />
           </div>
 
           {/* Mobile Menu Button */}
           <button
             type="button"
-            aria-label={isMobileMenuOpen ? "Fechar menu" : "Abrir menu"}
+            aria-label={
+              isMobileMenuOpen
+                ? (lang === "pt" ? "Fechar menu" : "Close menu")
+                : (lang === "pt" ? "Abrir menu" : "Open menu")
+            }
             className="md:hidden p-2 text-foreground hover:text-primary transition-[color] duration-300"
             onClick={() => setIsMobileMenuOpen((v) => !v)}
           >
@@ -82,6 +93,11 @@ const Navigation = () => {
                 {link.label}
               </a>
             ))}
+
+            {/* Botão de idioma (mobile) */}
+            <div className="pt-2">
+              <LangToggle className="w-full" size="sm" />
+            </div>
           </div>
         </div>
       )}
