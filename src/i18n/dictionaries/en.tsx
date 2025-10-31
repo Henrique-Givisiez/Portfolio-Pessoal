@@ -212,7 +212,7 @@ nav: {
 
     tcu_finops_intern: {
       title: "Cloud & FinOps Intern",
-      organization: "Brazilian Federal Court of Accounts (TCU)",
+      organization: "Federal Court of Accounts (TCU)",
       period: "feb/2025 - Present",
       description: "",
       location: "Brasília, Brazil",
@@ -227,7 +227,7 @@ nav: {
     struct_pm: {
       title: "Web Developer & Project Manager",
       organization: "Struct - Soluções Web",
-      period: "jun/2025 - oct/2025",
+      period: "jun/2025 - Present",
       description: "",
       location: "Brasília, Brazil",
       highlights_json: JSON.stringify([

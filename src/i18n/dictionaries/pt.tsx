@@ -232,7 +232,7 @@ projects: {
     struct_pm: {
       title: "Desenvolvedor Web & Gerente de Projetos",
       organization: "Struct - Soluções Web",
-      period: "jun/2025 - out/2025",
+      period: "jun/2025 - Atualmente",
       location: "Brasília, DF",
       description: "",
       highlights_json: JSON.stringify([
