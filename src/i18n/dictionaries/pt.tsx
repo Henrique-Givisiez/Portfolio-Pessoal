@@ -122,28 +122,36 @@ projects: {
       title: "Fiscalização de Fornecedores - TCU",
       description:
         "ETL completo integrando dados do Azure Boards ao Microsoft Fabric, automatizando a extração e transformação de indicadores de desempenho de fornecedores. Dashboards no Power BI permitem monitorar conformidade contratual, prazos e eficiência operacional.",
+        demo: "",
+      github: "",
     },
     multicloud_costs: {
       title: "Custos Multicloud (AWS + Azure + GCP) - TCU",
       description:
         "Pipeline para integração e padronização de custos multicloud, consolidando faturas em um Lakehouse no Microsoft Fabric. Métricas DAX para variação mensal, alocação e oportunidades de otimização FinOps em painéis no Power BI.",
+        demo: "",
+      github: "",
     },
     exec_dashboard: {
       title: "Dashboard Estratégico – TCU",
       description:
         "Painel executivo com visão unificada de custos multicloud: variação mensal, acumulado, economia potencial e distribuição por provedor/produto, com narrativa de insights e filtros dinâmicos.",
+        demo: "",
+      github: "",
     },
     gmaps_routes: {
       title: "Análise de Rotas com Google Maps - Pessoal",
       description:
         "ETL automatizado coletando tráfego via Google Maps Routes API (cada 10 min por uma semana). Processamento em PySpark/Microsoft Fabric e dashboard em Power BI para padrões de congestionamento e horários de pico.",
-      demo: "", // opcional; usa o fallback do componente se vazio
+      demo: "",
+      github: "",
     },
     roma_struct: {
       title: "Projeto ROMA - Struct",
       description:
         "Sistema web completo para gestão de restaurante (T3 Stack: Next.js, tRPC, Prisma, Tailwind, PostgreSQL). Pedidos, cardápio, relatórios diários, autenticação e exportação, com práticas ágeis e foco no usuário.",
       demo: "",
+      github: "",
     },
     comida_portuguesa: {
       title: "Comida Portuguesa com Certeza - Pessoal",
