@@ -5,10 +5,29 @@ import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 import { useLanguage } from "~/i18n/LanguageProvider";
 
+type Project = {
+  key: string;
+  categoryKeys: string[];
+  tagKeys: string[];
+  demo?: string;
+  github?: string;
+};
+
 const Projects = () => {
   const { t } = useLanguage();
 
-  const projects = [
+  // Helpers seguros para tratar o retorno do dicionário
+  const tStr = (key: string): string => {
+    const v = t(key) as unknown;
+    return typeof v === "string" ? v : "";
+  };
+  const tOptStr = (key: string): string | undefined => {
+    const v = t(key) as unknown;
+    const s = typeof v === "string" ? v.trim() : "";
+    return s ? s : undefined;
+  };
+
+  const projects: Project[] = [
     {
       key: "tcu_suppliers",
       categoryKeys: ["data_engineering", "data_analytics", "governance"],
@@ -50,21 +69,22 @@ const Projects = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 mt-10 mt-15 mb-10">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-10 animate-fade-in">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              {t("projects.title")}
-            </h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">{tStr("projects.title")}</h2>
             <div className="w-30 h-1 gradient-primary mx-auto rounded-full mb-5" />
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              {t("projects.lead")}
+              {tStr("projects.lead")}
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {projects.map((p, index) => {
-              const title = t(`projects.items.${p.key}.title`);
-              const description = t(`projects.items.${p.key}.description`);
-              const github = t(`projects.items.${p.key}.github`) || (p as any).github;
-              const demo = t(`projects.items.${p.key}.demo`) || (p as any).demo;
+              const base = `projects.items.${p.key}`;
+              const title = tStr(`${base}.title`);
+              const description = tStr(`${base}.description`);
+
+              // Fonte 1: dicionário (se houver). Fonte 2: valor do objeto (fallback).
+              const github = tOptStr(`${base}.github`) ?? p.github;
+              const demo = tOptStr(`${base}.demo`) ?? p.demo;
 
               return (
                 <div
@@ -75,7 +95,7 @@ const Projects = () => {
                   <div className="mb-4">
                     {p.categoryKeys.map((ck, i) => (
                       <Badge key={i} variant="secondary" className="mb-3 mr-2">
-                        {t(`projects.categories.${ck}`)}
+                        {tStr(`projects.categories.${ck}`)}
                       </Badge>
                     ))}
 
@@ -104,7 +124,7 @@ const Projects = () => {
                       <Button variant="outline" size="sm" className="flex-1" asChild>
                         <a href={github} target="_blank" rel="noopener noreferrer">
                           <Github className="h-4 w-4 mr-2" />
-                          {t("projects.buttons.code")}
+                          {tStr("projects.buttons.code")}
                         </a>
                       </Button>
                     )}
@@ -112,7 +132,7 @@ const Projects = () => {
                       <Button variant="outline" size="sm" className="flex-1" asChild>
                         <a href={demo} target="_blank" rel="noopener noreferrer">
                           <ExternalLink className="h-4 w-4 mr-2" />
-                          {t("projects.buttons.demo")}
+                          {tStr("projects.buttons.demo")}
                         </a>
                       </Button>
                     )}

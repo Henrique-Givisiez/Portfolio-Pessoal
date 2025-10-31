@@ -4,7 +4,6 @@ import { Mail, Linkedin, Github, Send } from "lucide-react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
-import { toast } from "~/hooks/use-toast";
 import { useLanguage } from "~/i18n/LanguageProvider";
 
 const Contact = () => {
@@ -14,10 +13,7 @@ const Contact = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // aqui você enviaria os dados p/ backend
-    toast({
-      title: t("contact.toast.success.title"),
-      description: t("contact.toast.success.desc"),
-    });
+    
     setFormData({ name: "", email: "", message: "" });
   };
 

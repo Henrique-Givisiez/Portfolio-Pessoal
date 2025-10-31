@@ -1,12 +1,12 @@
 // src/components/Hero.tsx
 "use client";
+import Image from "next/image";
 import { ArrowDown, Download, Github, Linkedin, Mail } from "lucide-react";
 import profilePic from "~/app/assets/foto-perfil.jpg";
 import heroBg from "~/app/assets/hero-bg.jpg";
 import { Button } from "./ui/button";
 import { toast } from "sonner";
 import { useLanguage } from "~/i18n/LanguageProvider";
-
 
 const Hero = () => {
   const { t, tr } = useLanguage();
@@ -33,11 +33,24 @@ const Hero = () => {
   };
 
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
+    <section
+      id="hero"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20"
+    >
       {/* Background */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-br from-background via-background/95 to-primary/5" />
-        <img src={heroBg.src} alt="Hero Background" className="w-full h-full object-cover opacity-30" />
+        <div className="absolute inset-0">
+          <Image
+            src={heroBg}
+            alt=""
+            fill
+            sizes="100vw"
+            priority
+            placeholder="blur"
+            className="object-cover opacity-30"
+          />
+        </div>
       </div>
 
       {/* Content */}
@@ -48,9 +61,14 @@ const Hero = () => {
           </div>
 
           <div className="relative p-1 rounded-full bg-background/70 backdrop-blur-lg ring-1 ring-border shadow-lg ring-primary/70">
-            <img
-              src={profilePic.src}
+            <Image
+              src={profilePic}
               alt="Foto de perfil de Henrique Givisiez"
+              width={240}
+              height={240}
+              priority
+              placeholder="blur"
+              sizes="(min-width: 640px) 15rem, 15rem"
               className="h-60 w-60 rounded-full object-cover"
             />
           </div>
@@ -63,19 +81,21 @@ const Hero = () => {
             </h1>
 
             <p className="mt-4 text-lg sm:text-xl font-medium text-foreground/90 tracking-wide max-w-2xl mx-auto leading-relaxed drop-shadow-[0_1px_3px_hsl(var(--color-primary)/0.25)]">
-              {
-                tr("hero.subtitle", {
-                  Em: ({ children }: { children: React.ReactNode }) => (
-                    <span className="text-primary">{children}</span>
-                  ),
-                })
-              }
+              {tr("hero.subtitle", {
+                Em: ({ children }: { children: React.ReactNode }) => (
+                  <span className="text-primary">{children}</span>
+                ),
+              })}
             </p>
           </div>
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button size="lg" className="px-6 py-3 rounded-xl bg-primary text-white font-medium hover:bg-primary/90 transition-colors" asChild>
+            <Button
+              size="lg"
+              className="px-6 py-3 rounded-xl bg-primary text-white font-medium hover:bg-primary/90 transition-colors"
+              asChild
+            >
               <a href="#about">
                 {t("hero.cta_about")}
                 <ArrowDown className="ml-2 h-5 w-5" />
@@ -95,13 +115,26 @@ const Hero = () => {
 
           {/* Social Links */}
           <div className="flex gap-4 justify-center pt-8 mb-3">
-            <a href="https://www.linkedin.com/in/henrique-givisiez/" target="_blank" rel="noopener noreferrer" className="p-3 rounded-full bg-secondary hover:bg-primary hover:text-primary-foreground transition-smooth hover-lift">
+            <a
+              href="https://www.linkedin.com/in/henrique-givisiez/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 rounded-full bg-secondary hover:bg-primary hover:text-primary-foreground transition-smooth hover-lift"
+            >
               <Linkedin className="h-5 w-5" />
             </a>
-            <a href="https://github.com/Henrique-Givisiez" target="_blank" rel="noopener noreferrer" className="p-3 rounded-full bg-secondary hover:bg-primary hover:text-primary-foreground transition-smooth hover-lift">
+            <a
+              href="https://github.com/Henrique-Givisiez"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 rounded-full bg-secondary hover:bg-primary hover:text-primary-foreground transition-smooth hover-lift"
+            >
               <Github className="h-5 w-5" />
             </a>
-            <a href="mailto:lucogds@gmail.com" className="p-3 rounded-full bg-secondary hover:bg-primary hover:text-primary-foreground transition-smooth hover-lift">
+            <a
+              href="mailto:lucogds@gmail.com"
+              className="p-3 rounded-full bg-secondary hover:bg-primary hover:text-primary-foreground transition-smooth hover-lift"
+            >
               <Mail className="h-5 w-5" />
             </a>
           </div>

@@ -65,18 +65,37 @@ const Experience = () => {
                 const period = t(`${base}.period`);
                 const location = t(`${base}.location`);
                 const description = t(`${base}.description`);
-                const highlightsStr = t(`${base}.highlights_json`); // opcional
                 const highlights: string[] = (() => {
+                  // Pega o JSON (ou vazio)
+                  const highlightsStr = t(`${base}.highlights_json`) ?? "";
+
+                  // 1) Tenta parsear um array de strings válido
                   try {
-                    const parsed = JSON.parse(highlightsStr);
-                    return Array.isArray(parsed) ? parsed : [];
+                    const parsed: unknown = JSON.parse(highlightsStr);
+
+                    const isStringArray = (v: unknown): v is string[] =>
+                      Array.isArray(v) && v.every((x) => typeof x === "string");
+
+                    if (isStringArray(parsed)) {
+                      return parsed;
+                    }
                   } catch {
-                    // caso não exista/queira usar arrays, buscamos item a item
-                    const count = Number(t(`${base}.highlights_count`)) || 0;
-                    return Array.from({ length: count }, (_, i) =>
-                      t(`${base}.highlights.${i}`)
-                    ).filter(Boolean);
+                    // ignore: caímos no fallback abaixo
                   }
+
+                  // 2) Fallback: ler itens individuais com base no contador
+                  const countRaw = t(`${base}.highlights_count`);
+                  const count = Number(countRaw);
+
+                  if (Number.isFinite(count) && count > 0) {
+                    const arr = Array.from({ length: count }, (_, i) =>
+                      t(`${base}.highlights.${i}`)
+                    ).filter((s): s is string => Boolean(s));
+
+                    return arr;
+                  }
+
+                  return [];
                 })();
 
                 return (

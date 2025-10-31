@@ -8,7 +8,7 @@ const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const { lang, setLang, t } = useLanguage();
+  const { lang, t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -31,8 +31,6 @@ const Navigation = () => {
   const navSurface = isScrolled
     ? "bg-background/90 border-b border-border shadow-md"
     : "bg-background/60 border-b border-transparent";
-
-  const toggleLabel = lang === "pt" ? "🇧🇷 PT" : "🇺🇸 EN";
 
   return (
     <nav className={`${navShell} ${navSurface}`}>
