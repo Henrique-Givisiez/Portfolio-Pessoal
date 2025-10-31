@@ -32,6 +32,7 @@ const Projects = () => {
       key: "tcu_suppliers",
       categoryKeys: ["data_engineering", "data_analytics", "governance"],
       tagKeys: ["Python", "Azure Boards API", "Microsoft Fabric", "Power BI", "PySpark", "ETL"],
+      github: "https://github.com/Henrique-Givisiez/Azure-Boards-API-Fabric-Supplier-Control",
     },
     {
       key: "multicloud_costs",
@@ -82,9 +83,13 @@ const Projects = () => {
               const title = tStr(`${base}.title`);
               const description = tStr(`${base}.description`);
 
-              // Fonte 1: dicionário (se houver). Fonte 2: valor do objeto (fallback).
-              const github = tOptStr(`${base}.github`) ?? p.github;
+               // Busca primeiro no dicionário; se vazio, usa o valor do objeto
+              const githubFromDict = tOptStr(`${base}.github`) ?? p.github;
               const demo = tOptStr(`${base}.demo`) ?? p.demo;
+
+              console.log("Project:", p.key, { githubFromDict, demo });
+
+              const hasAnyAction = Boolean(githubFromDict || demo);
 
               return (
                 <div
@@ -119,10 +124,11 @@ const Projects = () => {
                     ))}
                   </div>
 
+                 { hasAnyAction && ( 
                   <div className="flex gap-2">
-                    {github && (
+                    {githubFromDict && (
                       <Button variant="outline" size="sm" className="flex-1" asChild>
-                        <a href={github} target="_blank" rel="noopener noreferrer">
+                        <a href={githubFromDict} target="_blank" rel="noopener noreferrer">
                           <Github className="h-4 w-4 mr-2" />
                           {tStr("projects.buttons.code")}
                         </a>
@@ -137,6 +143,7 @@ const Projects = () => {
                       </Button>
                     )}
                   </div>
+                )}
                 </div>
               );
             })}
