@@ -49,6 +49,7 @@ const Projects = () => {
       categoryKeys: ["data_engineering", "cloud"],
       tagKeys: ["Python", "Google Maps Routes API", "PySpark", "Microsoft Fabric", "Power BI", "ETL"],
       demo: "https://www.linkedin.com/posts/henrique-givisiez_pt-br-do-google-maps-para-o-power-bi-activity-7378775699144298496-leQO?utm_source=share&utm_medium=member_desktop&rcm=ACoAADi58-ABNr3Y_dKFlMusKii3vOt-umx8f2c",
+      github: "https://github.com/Henrique-Givisiez/Google-Maps-Routes-API"
     },
     {
       key: "roma_struct",
