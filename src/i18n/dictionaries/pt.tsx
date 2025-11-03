@@ -181,7 +181,7 @@ projects: {
     },
   },
 },experience: {
-  title: "Experiência & Educação",
+  title: "Trajetória",
   lead: "Conheça minha trajetória acadêmica e profissional",
 
   items: {
@@ -211,7 +211,7 @@ projects: {
     },
 
     bb_intern: {
-      title: "Estagiário em Engenharia e Automação de Processos",
+      title: "Estagiário em Engenharia",
       organization: "Banco do Brasil",
       period: "jun/2023 - fev/2025",
       location: "Brasília, DF",

@@ -44,7 +44,7 @@ const Experience = () => {
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
               {t("experience.title")}
             </h2>
-            <div className="w-80 h-1 gradient-primary mx-auto rounded-full mb-5" />
+            <div className="w-40 h-1 gradient-primary mx-auto rounded-full mb-5" />
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               {t("experience.lead")}
             </p>

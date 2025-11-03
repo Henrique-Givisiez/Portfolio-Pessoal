@@ -176,7 +176,7 @@ nav: {
     },
   },
 },experience: {
-  title: "Experience & Education",
+  title: "Journey",
   lead: "A quick look at my academic and professional journey",
 
   items: {
@@ -206,7 +206,7 @@ nav: {
     },
 
     bb_intern: {
-      title: "Process Engineering & Automation Intern",
+      title: "Engineering Intern",
       organization: "Banco do Brasil",
       period: "jun/2023 - feb/2025",
       location: "Brasília, Brazil",
