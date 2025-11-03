@@ -5,17 +5,37 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { useLanguage } from "~/i18n/LanguageProvider";
+import emailjs from "emailjs-com";
+import { toast } from "sonner";
 
 const Contact = () => {
   const { t } = useLanguage();
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // aqui você enviaria os dados p/ backend
-    
-    setFormData({ name: "", email: "", message: "" });
-  };
+  e.preventDefault();
+
+  emailjs
+    .send(
+      "service_f1qlj7d", // ex: service_abc123
+      "template_e7oa9tf", // ex: template_xyz
+      {
+        from_name: formData.name,
+        from_email: formData.email,
+        message: formData.message,
+      },
+      "XCrdKrKISUBU-qFlt" // ex: Hs8JfL1XxYz
+    )
+    .then(
+      () => {
+        toast.success(t("contact.toast.success.desc"));
+        setFormData({ name: "", email: "", message: "" });
+      },
+      (error) => {
+        alert("Erro ao enviar: " + error.text);
+      }
+    );
+};
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
