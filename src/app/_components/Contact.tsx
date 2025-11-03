@@ -32,7 +32,7 @@ const Contact = () => {
         setFormData({ name: "", email: "", message: "" });
       },
       (error) => {
-        alert("Erro ao enviar: " + error.text);
+        console.error("EmailJS Error:", error);
       }
     );
 };

@@ -90,7 +90,7 @@ const Projects = () => {
 
               console.log("Project:", p.key, { githubFromDict, demo });
 
-              const hasAnyAction = Boolean(githubFromDict || demo);
+              const hasAnyAction = Boolean(githubFromDict ?? demo);
 
               return (
                 <div
