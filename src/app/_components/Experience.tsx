@@ -23,6 +23,7 @@ const Experience = () => {
     { key: "tcu_finops_intern", type: "work" },
     { key: "struct_pm", type: "work" },
     { key: "focp", type: "certification" },
+    { key: "dp700", type: "certification" },
   ];
 
   const getIcon = (type: ExpType) => {

@@ -253,6 +253,14 @@ nav: {
       description:
         "Certification in cloud financial management, cost optimization, and governance across cloud environments.",
     },
+    dp700: {
+      title: "Microsoft DP-700: Fabric Analytics Engineer Associate",
+      organization: "Microsoft",
+      period: "dec/2025",
+      location: "",
+      description:
+        "Certification in design and implementation of data analysis solutions using Microsoft Fabric, including modeling, security, and performance optimization.",
+    }
   },
 },contact: {
   title: "Contact",
